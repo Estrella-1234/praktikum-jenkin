@@ -1,31 +1,26 @@
 const request = require('supertest');
-const app = require('./app'); // Import the app
+const app = require('./app');
 
-describe('Express App Routes', () => {
-
-    afterAll(() => {
-        server.close(); // Close the server to free resources
-    });
-    
-    // Test for Home Route
-    it('GET / should respond with Welcome to the Home Route!', async () => {
+describe('GET /', () => {
+    it('responds with Hello, World!', async () => {
         const res = await request(app).get('/');
         expect(res.statusCode).toBe(200);
-        expect(res.body).toEqual({ message: 'Welcome to the Home Route!' });
+        expect(res.text).toBe('Hello, World!');
     });
+});
 
-    // Test for About Route
-    it('GET /about should respond with This is the About Route!', async () => {
-        const res = await request(app).get('/about');
+describe('GET /hello', () => {
+    it('responds with Hello, World!', async () => {
+        const res = await request(app).get('/hello');
         expect(res.statusCode).toBe(200);
-        expect(res.body).toEqual({ message: 'This is the About Route!' });
+        expect(res.text).toBe('Hello, World!');
     });
+});
 
-    // Test for Echo Route
-    it('POST /echo should respond with Echo: <data>', async () => {
-        const testData = { data: 'Hello, World!' };
-        const res = await request(app).post('/echo').send(testData);
+describe('GET /goodbye', () => {
+    it('responds with Goodbye, World!', async () => {
+        const res = await request(app).get('/goodbye');
         expect(res.statusCode).toBe(200);
-        expect(res.body).toEqual({ message: 'Echo: Hello, World!' });
+        expect(res.text).toBe('Goodbye, World!');
     });
 });
