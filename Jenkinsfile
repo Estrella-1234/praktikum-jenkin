@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/username/node-ci-cd.git'
+                git branch: 'main', url: 'https://github.com/Estrella-1234/praktikum-jenkin'
             }
         }
         stage('Install Dependencies') {
