@@ -1,7 +1,4 @@
 pipeline {
-    agent {
-        docker { image 'node:lts' }  // Use a Node.js Docker image
-    }
     environment {
         CI = 'true'
     }
