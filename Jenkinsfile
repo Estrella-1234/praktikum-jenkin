@@ -6,7 +6,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Estrella-1234/praktikum-jenkin'
+                script {
+                    // Disable default SCM checkout and use the explicit checkout step in Jenkinsfile
+                    checkout scm
+                }
             }
         }
         stage('Install Dependencies') {
