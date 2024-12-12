@@ -1,15 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:lts' }  // Use a Node.js Docker image
+    }
     environment {
         CI = 'true'
     }
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    // Disable default SCM checkout and use the explicit checkout step in Jenkinsfile
-                    checkout scm
-                }
+                checkout scm
             }
         }
         stage('Install Dependencies') {
