@@ -13,12 +13,12 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'  // Use bat for Windows
             }
         }
         stage('Run Unit Tests') {
             steps {
-                sh 'npm test'
+                bat 'npm test'  // Use bat for Windows
             }
         }
     }
